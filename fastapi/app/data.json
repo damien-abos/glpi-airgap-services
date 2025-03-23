@@ -1,40 +1,23 @@
-from fastapi import FastAPI
-
-app = FastAPI()
-
-
-@app.get("/")
-def status():
-    return {"status": "up"}
-
-#@app.get("/api/registration")
-#def registration():
-#    return {}
-
-@app.get("/api/registration/info")
-def registration_info():
-    return {
+{
+  "collections": {
+    "registrationInfo": [
+      {
         "key": "%%REGISTRATION_KEY%%",
-        "is_valid": True,
+        "is_valid": true,
         "owner": {
-            "name": "%%REGISTRATION_OWNER%%"
+          "name": "%%REGISTRATION_OWNER%%"
         },
         "subscription": {
-            "offer_reference": "virtual",
-            "title": "Enregistré",
-            "is_running": True,
-            "begin_date": None,
-            "end_date": None,
-            "features": []
+          "offer_reference": "virtual",
+          "title": "Enregistré",
+          "is_running": true,
+          "begin_date": null,
+          "end_date": null,
+          "features": []
         }
-    }
-
-@app.get("/api/registration/offers")
-def registration_offers():
-    # Request Headers:
-    # - X-Registration-Key: %%REGISTRATION_KEY%%
-    # - X-Glpi-Network-Uid: %%GLPI_NETWORK_UID%%
-    return [
+      }
+    ],
+    "registrationOffer": [
         {
             "offer_reference": "starter",
             "title": "Support Starter",
@@ -79,24 +62,8 @@ def registration_offers():
                 "plugins-advanced"
             ]
         }
-    ]
-
-
-@app.get("/api/marketplace/plugins")
-def markplace_plugins():
-    # Request Headers:
-    # - X-Registration-Key: %%REGISTRATION_KEY%%
-    # - X-Glpi-Network-Uid: %%GLPI_NETWORK_UID%%
-    # - X-Range: 0-199
-
-    # Response Headers:
-    # - X-Content-Type-Options: nosniff
-    # - Accept-Range: 104 model
-    # - Content-Range: 0-199/104
-    # - Cache-Control: no-cache, private
-    # - X-RateLimit-Limit: 60
-    # - X-RateLimit-Remaining: 58
-    return [
+    ],
+    "plugins": [
         {
             "id": 2,
             "key": "additionalalerts",
@@ -140,7 +107,7 @@ def markplace_plugins():
                     "long_description": "This plugin enables you to send email supplementary alerts :<br />- Items with empty buy date (Choice of supported types : for not taking into account the equipment not purchased),<br />- Cartridges whose level is low (fusion Inventory)."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Sending of additional alerts. This plugin enables you to send email alerts regarding the items with empty buy date and Cartridges whose level is low."
         },
         {
@@ -233,7 +200,7 @@ def markplace_plugins():
                     "long_description": "Výkazy o IP adresách. Tento zásuvný modul umožňuje vytvářet výkaz o IP adresách pro vizualizaci použitých a volných adres na dané síti.<br />- Vytváření seznamu přiřazených/volných/rezervovaných/duplicitních IP adres pro všechny položky s kolonkou IP adresa.<br />- Rezervace IP adres.<br />- Ping funkce pro volné IP adresy pro mnoho systémů."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "IP reports. This plugin enables you to create IP report for visualize IP addresses used and free on a given network."
         },
         {
@@ -244,8 +211,8 @@ def markplace_plugins():
             "xml_url": "https://raw.githubusercontent.com/InfotelGLPI/manageentities/master/manageentities.xml",
             "homepage_url": "https://github.com/InfotelGLPI/manageentities",
             "download_url": "https://github.com/InfotelGLPI/manageentities/releases",
-            "issues_url": None,
-            "readme_url": None,
+            "issues_url": null,
+            "readme_url": null,
             "changelog_url": "",
             "license": "GPL v2+",
             "date_added": "2009-08-07T00:00:00.000000Z",
@@ -289,7 +256,7 @@ def markplace_plugins():
                     "long_description": "This plugin allows you to manage entities. Link with documents, contacts, contracts. You can also create intervention reports and do contract management of your entities. For a given entity, you define :<br />- The associated contacts (and the manager),<br />- The contracts involved (and those used by default),<br />- The daily rate for a given type of intervention,<br />- The associated documents.<br />- Then in the details of the contract, you set the initial balance (number of days x the type of intervention).<br />- Once done, you can create reports of intervention and thus have the breakdown of contract used.<br />- The plugin can be launched when GLPI loading"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Entities management. This plugin allows you to manage entities. Link with documents, contacts, contracts. You can also create intervention reports and do contract management of your entities."
         },
         {
@@ -408,7 +375,7 @@ def markplace_plugins():
                     "long_description": "\n                Tento zásuvný modul umožňuje vpravovat finannčí informace z webů výrobců do GLPI.\n                - Předem vyberete typ vybavení a když zadáte sériové číslo a označení modelu (liší se mezi výrobci) můžete importovat informace o záruce, datu zakoupení a uložit v podobě HTML stránky.\n                - Funguje s Dell, HP, Toshiba, Lenovo (verze &gt; 1.5.0) a Fujitsu-Siemens\n            "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "\n                Imports of financials informations for items from manufacturers web site.<br />Works with Dell, HP, Toshiba, Fujitsu-Siemens and Lenovo"
         },
         {
@@ -494,7 +461,7 @@ def markplace_plugins():
                     "long_description": "This plugin enables you to manage the accounts of your network and associate them with elements of the inventory.<br />- Account detail : login / password, user, creation and expiration,<br />-Using hash and crypting key,<br />- Mailing system allow to verify expired accounts,<br />- Can be used with helpdesk,<br />- Can be integrated into Environment plugin."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Manage accounts (login / password). <br />This plugin enables you to manage the accounts of your network and associate them with elements of the inventory.<br />The accounts are crypted in database with hash and crypting key.<br />A mailing system allow to verify expired accounts."
         },
         {
@@ -505,8 +472,8 @@ def markplace_plugins():
             "xml_url": "https://raw.githubusercontent.com/yllen/appliances/master/appliances.xml",
             "homepage_url": "https://github.com/yllen/appliances",
             "download_url": "https://github.com/yllen/appliances/releases",
-            "issues_url": None,
-            "readme_url": None,
+            "issues_url": null,
+            "readme_url": null,
             "changelog_url": "",
             "license": "AGPLv3",
             "date_added": "2009-08-07T00:00:00.000000Z",
@@ -541,7 +508,7 @@ def markplace_plugins():
                     "long_description": "This plugin enables you to create appliance (several elements constituting a unit).<br />-Appliances creation (composed by various inventory item)<br />-Direct management from items<br />-Integrated with Helpdesk<br />NB : This plugin can be integrated in environment plugin and be used with archires plugin."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Appliances management. This plugin enables you to create appliance (several elements constituting a unit)."
         },
         {
@@ -602,7 +569,7 @@ def markplace_plugins():
                     "long_description": "Správa jmenovek. Tento zásuvný modul umožňuje spravovat jmenovky v síti a přiřazovat je k prvkům inventáře.<br />Systém posílání e-mailů umožňuje ověřovat jmenovky se skončenou platností nebo ty, kterým brzy končí.<br />- Je možné použít se službou podpory<br />- Je možné začlenit do zásuvného modulu Prostředí."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Badges management. This plugin enables you to manage your badges into your network and associate them with elements of the inventory.<br />A mailing system allow to verify already expired or soon expired badges."
         },
         {
@@ -650,7 +617,7 @@ def markplace_plugins():
                     "long_description": "Tento zásuvný modul umožňuje spravovat databáze na síti a přiřazovat je prvkům v inventáři.<br />-Inventář instancí<br />-Inventář skriptů.<br />- Je možné použít se službou podpory<br />-Je možné začlenit do zásuvného modulu Prostředí."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Databases management. This plugin enables you to manage the databases of your network and associate them with elements of the inventory.<br />-Instances inventory<br />-Scripts inventory"
         },
         {
@@ -712,7 +679,7 @@ def markplace_plugins():
                     "long_description": "This plugin allows you to generate a financial report (asset situation) for a given date.<br />- In plugin setup, add identifier for each type of equipment inventory related to the inventory number (example : your notebooks have un inventory number beginnning with &#039;PO&#039; so fill the setup plugin with PO, Servers : SE, Computers : PC etc).<br />- Generate the report.<br />- Export Csv, Pdf."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Financial report : Asset situation. This plugin allows you to generate a financial report (asset situation) for a given date.<br />- Export Csv, Pdf"
         },
         {
@@ -723,8 +690,8 @@ def markplace_plugins():
             "xml_url": "https://raw.githubusercontent.com/yllen/reports/master/reports.xml",
             "homepage_url": "https://github.com/yllen/reports",
             "download_url": "https://github.com/yllen/reports/releases",
-            "issues_url": None,
-            "readme_url": None,
+            "issues_url": null,
+            "readme_url": null,
             "changelog_url": "",
             "license": "GPL v3+",
             "date_added": "2009-08-07T00:00:00.000000Z",
@@ -767,7 +734,7 @@ def markplace_plugins():
                     "long_description": "Tento zásuvný modul přidává další hlášení.<br />Hlavní funkce :<br />-Také \n         umožňuje snadno přidávat nová hlášení (jeden PHP skript pro výkaz a jeden pro překlady).\n         <br />-Obsluhuje práva na každý z nových výkazů<br />-Poskytuje některé nové výkazy (pro ukázku)\n         <br />Výkazy, které jsou k dispozici ve verzi 1.3.0 :<br />-Podrobný výkaz o licencích<br />\n         -Duplicitní počítače<br />-Finanční informace<br />-Historie nedávných instalací hardware<br />\n         -Historie nedávných instalací software<br />-Licence podle data skončení platnosti<br />\n         -Seznam všech zařízení skupiny, seřazené podle uživatelů<br />-Seznam skupina a jejich členů\n         <br />-Strom umístění<br />-Počty vybavení podle umístění<br />-Počty položek podle entit\n         <br />-Katalog pravidla"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Reports. This plugin enables additional reports. It also allow you to add new \n         reports in a simply way."
         },
         {
@@ -871,7 +838,7 @@ def markplace_plugins():
                     "long_description": "This plugin allows you to manage human resources to properly manage the allocation of material.<br />- Management of various modes (private, public, SSII)<br />Features : <br />- Checklists management<br />- Tasks management<br />- Notifications system<br />- Can be used with helpdesk<br />- Can be used with badges plugin<br />- Can be used with PDF plugin"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Resources management. This plugin allows you to manage human resources to properly manage the allocation of material.<br />- Management of various modes (private, public, SSII)<br />- Checklists / Tasks management<br />- Notifications system<br />- Can be used with helpdesk"
         },
         {
@@ -933,7 +900,7 @@ def markplace_plugins():
                     "long_description": "Appliance dashboard. This plugin allows you to display your business applications with all their characteristics in the form of a dashboard."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Appliance dashboard. This plugin allows you to display your business applications with all their characteristics in the form of a dashboard."
         },
         {
@@ -1003,7 +970,7 @@ def markplace_plugins():
                     "long_description": "This plugin allows you to see your asset with tree view.<br />-Should folders be links<br />-Nodes can be highlighted.<br />-Tree can be drawn with lines or pics.<br />-The plugin can be launched when GLPI loading"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Tree view. This plugin allows you to see your asset with tree view."
         },
         {
@@ -1049,7 +1016,7 @@ def markplace_plugins():
                     "long_description": "Ce plugin permet d&#039;afficher dans l&#039;interface GLPI les informations générales d&#039;une machine qui est également monitorée dans Centreon.\n         Il est également possible de consulter l&#039;état de ses services, son historique et d&#039;effectuer des actions courantes telles que les &#34;checks&#34;, les &#34;downtimes&#34; et les &#34;acknowledgements&#34;.\n         "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Centreon GLPI plugin"
         },
         {
@@ -1060,8 +1027,8 @@ def markplace_plugins():
             "xml_url": "https://raw.githubusercontent.com/pluginsGLPI/pdf/refs/heads/main/pdf.xml",
             "homepage_url": "https://github.com/pluginsGLPI/pdf",
             "download_url": "https://github.com/pluginsGLPI/pdf/releases",
-            "issues_url": None,
-            "readme_url": None,
+            "issues_url": null,
+            "readme_url": null,
             "changelog_url": "",
             "license": "AGPLv3",
             "date_added": "2009-08-12T00:00:00.000000Z",
@@ -1115,7 +1082,7 @@ def markplace_plugins():
                     "long_description": "This plugin allow you to select and export informations of an \n\tequipment to PDF file.\n    \t<br />- equipment types from GLPI\n    \t<br />- equipment types from some plugins\n    \t<br />- additional data from some plugins\n    \t<br />- one or many object(s) in a file\n\t"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin allow you to select and export informations of an \n\tequipment to PDF file.\n\t"
         },
         {
@@ -1254,7 +1221,7 @@ def markplace_plugins():
                     "long_description": "Elle permet de créer des modèles d’injection pour une réutilisation future et a été créée afin de répondre aux besoins suivants :<br /> - reprise des données d&#039;autres outils d&#039;inventaires<br /> - injection de bons de livraisons électroniques<br />Les données pouvant-être injectées sont :<br /> - données d&#039;inventaires (sauf logiciels et licences)<br /> - données de gestion (contrat, contact, fournisseur)<br /> - données de configuration (utilisateur, groupe, entité)"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin allows data import into GLPI using CSV files."
         },
         {
@@ -1329,7 +1296,7 @@ def markplace_plugins():
                     "long_description": "Tento zásuvný modul umožňuje inventarizovat nové typy položek, aniž by bylo třeba programovat. Umožňuje vytvářet tyto nové typy položek, typů a spravovat kolonky, které budou k dispozici. Je plně začleněný do software (Služba podpory, zápůjčky, šablony, atd.) Má podporu a propojení pro a se zásuvným modulem Vkládání dat ze souboru"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Do the inventory of new, non-native object types"
         },
         {
@@ -1457,7 +1424,7 @@ def markplace_plugins():
                     "long_description": "Tento zásuvný modul umožňuje spravovat objednávky pomocí GLPI :<br /> - Správa odkazů na produkty<br /> - Správa objednávek (s procesem schvalování)<br /> - Správa rozpočtů"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Order management"
         },
         {
@@ -1540,7 +1507,7 @@ def markplace_plugins():
                     "long_description": "Tento zásuvný modul umožňuje snadno zaarchivovat záznamy zařízení, kterým už skončila životnost"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Easy uninstall of obsolete assets in your inventory"
         },
         {
@@ -1639,7 +1606,7 @@ def markplace_plugins():
                     "long_description": "This plugin enables inventory numbers automatic generation. The configuration allows you to define :<br /> - The types for which automatic generation is enabled<br /> - Inventory number templates<br /> - If counters are globals or type specific"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Inventory numbers generation"
         },
         {
@@ -1701,7 +1668,7 @@ def markplace_plugins():
                     "long_description": "Ce plugin vous permet de gérer les liaisons de votre réseau et de les associer à des éléments de l&#039;inventaire."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin allows you to manage the connections of your network and associate them with elements of the inventory."
         },
         {
@@ -1712,8 +1679,8 @@ def markplace_plugins():
             "xml_url": "https://raw.githubusercontent.com/yllen/behaviors/master/behaviors.xml",
             "homepage_url": "https://github.com/yllen/behaviors",
             "download_url": "https://github.com/yllen/behaviors/releases",
-            "issues_url": None,
-            "readme_url": None,
+            "issues_url": null,
+            "readme_url": null,
             "changelog_url": "",
             "license": "AGPL v3+",
             "date_added": "2011-05-25T00:00:00.000000Z",
@@ -1757,7 +1724,7 @@ def markplace_plugins():
                     "long_description": "This plugin allows you to add optional behaviors to GLPI.\n      <br />- mandatory fields\n      <br />- requester&#039;s group\n      <br />- ticket&#039;s number format\n      <br />- new events in notifications \n   "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin allows you to add optional behaviors to GLPI."
         },
         {
@@ -1768,8 +1735,8 @@ def markplace_plugins():
             "xml_url": "https://raw.githubusercontent.com/pluginsGLPI/barcode/master/barcode.xml",
             "homepage_url": "https://github.com/pluginsGLPI/barcode",
             "download_url": "https://github.com/pluginsGLPI/barcode/releases",
-            "issues_url": None,
-            "readme_url": None,
+            "issues_url": null,
+            "readme_url": null,
             "changelog_url": "",
             "license": "AGPL v3+",
             "date_added": "2011-11-22T00:00:00.000000Z",
@@ -1814,7 +1781,7 @@ def markplace_plugins():
                     "long_description": "Tento zásuvný modul umožňuje vytvářet a exportovat do PDF čárové a QR kódy"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin allow you to generate bars code"
         },
         {
@@ -1920,7 +1887,7 @@ def markplace_plugins():
                     "long_description": "\nFormcreator is a plugin that allow creation of custom, easy to access forms for users when they want to create one or more tickets or changes.\n\nFeatures\n--------\n1. Direct access to forms self-service interface in main menu\n2. Highlighting forms in homepages\n3. Access to forms controlled: public access, identified user access, restricted access to some profiles\n4. Simple and customizable forms\n5. Forms organized by categories, entities and languages.\n6. Questions of any type of presentation: Textareas, lists, LDAP, files, etc.\n7. Questions organised in sections. Choice of the display order.\n8. Possibility to display a question based on certain criteria (response to a further question)\n9. A sharp control on responses from forms: text, numbers, size of fields, email, mandatory fields, regular expressions, etc.\n10. Creation of one or more tickets or changes from form answers\n11. Adding a description per fields, per sections, per forms, entities or languages.\n12. Formatting the ticket set: answers to questions displayed, tickets templates.\n13. Preview form created directly in the configuration.\n         "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Formcreator is a plugin that allow creation of custom, easy to access forms for users when they want to create one or more tickets or changes."
         },
         {
@@ -1987,7 +1954,7 @@ def markplace_plugins():
                     "long_description": "Tento zásuvný modul umožňuje přidávat souřadnice k libovolnému majektu / pracovním místům a umisťovat je tak na mapy.<br />Funkce:<br />- Přiblížit na mapě<br />- Hledání majetku na mapě<br />- Hromadný přesun majetků<br />- Přizpůsobit informace, které zobrazit<br />- Správa ikon souvisejících s typy majetku<br />- Správa kanceláří<br />- Zavolat kliknutím: kliknutím na tel. číslo je na IP telefonu přímo zahájen hovor<br />- Je možné použít se zásuvným modulem Personalistika"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Cartography. This plugin allows you to add coordinates to any asset / human resources and so the place it on maps."
         },
         {
@@ -2048,7 +2015,7 @@ def markplace_plugins():
                     "long_description": "Tento zásuvný modul umožňuje definovat typologie použítí (správa nastavení) z informací položek, evidovaných v GLPI.<br />Funkce:<br />- Použití engine pravidel pro přiřazení typologií<br />- Definice kritérií (obecný počítač / komponenty / síť / software)<br />- Výstrahy: Kontrola zpozorovaných technologií<br />- Automatické akce: automatická aktualizace typologií, kterých se týká<br />- Výkaz: seznam typologií služeb"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Typology. This plugin allows you to define typologies of use (configuration management) from the information items inventoried in GLPI."
         },
         {
@@ -2151,7 +2118,7 @@ def markplace_plugins():
                     "long_description": "Tento zásuvný modul umožňuje synchronizovat s řešením GLPI pro inventuru s OCS Inventory NG. Nahradí nativní režim OCS GLPI a použije funkce zásuvného modulu massocsimport pro poskytnutí lepší kompatibility a rozšiřitelnosti s OCS. Je složen ze skriptu (PHP nebo shell) pro automatizaci importu nebo synchronizaci počítačů (potřebuje, aby byl funkční Expertní režim)<br />Grafické rozhraní zobrazuje seznam spuštěných nebo dokončených skriptů a všech souvisejících dat."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "OCSInventory-NG synchronisation"
         },
         {
@@ -2225,7 +2192,7 @@ def markplace_plugins():
                     "long_description": "This plugin allows you to indicate in the ticket interface if the ticket requester belongs to a VIP group :<br />* Parameter setting in the group interface:<br />     - Creation of a group, indication in the &#34;VIP&#34; window of the parameter if yes or no &#34;VIP Group&#34;.<br />* Indication in the ticket interface by a &#34;VIP&#34; logo and colouring of the user&#039;s name in red if the ticket requester belongs to a VIP group"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "VIP. This plugin allows you to indicate in the ticket interface if the ticket requester belongs to a VIP group."
         },
         {
@@ -2269,7 +2236,7 @@ def markplace_plugins():
                     "long_description": "Ce plugin permet de synchroniser les tickets, problèmes et changements avec l&#039;outil MantisBT.\n            <br />Voici une liste de ses fonctionnalités actuelles :\n            <ul><li>Connexion via les Webservices de MantisBT (MantisConnect);</li>\n            <li>Création d&#039;une nouvelle issue MantisBT depuis un ticket, un problème ou un changement GLPi;</li>\n            <li>Liaison d&#039;une issue MantisBT existante depuis un ticket, un problème ou un changement GLPi;</li>\n            <li>Transmission des informations de l&#039;objet GLPi vers l&#039;issue MantisBT créée/liéée;</li>\n            <li>Transfert et mise à jour des pièces jointes de l&#039;objet GLPi vers l&#039;issue MantisBT créée/liéée;</li>\n            <li>Tâche automatique de mise à jour de l&#039;objet GLPi (passage à l&#039;état résolu) lors que l&#039;issue MantisBT est résolue;</li>\n            <li>Gestion des droits sur le plugin;</li>\n            <li>Gestion de la configuration de l&#039;interconnexion.</li>\n         </ul>"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin allows to synchronize tickets, problems and changes with the MantisBT tool."
         },
         {
@@ -2333,7 +2300,7 @@ def markplace_plugins():
                     "long_description": "Data synchronization with Microsoft SCCM\n\nPlugin to synchronize computers from SCCM to GLPI.\n\n* The plugin ask the SCCM server with MsSQL queries ;\n* it builds an XML file for each computer\n* and injects it directly into the GLPI native inventory over HTTP(s) (via cURL).\n\n\nPrerequisite :\n\n* PHP curl_init : http://php.net/manual/en/function.curl-init.php\n* PHP mssql_connect : http://php.net/manual/en/function.mssql-connect.php\n* Microsoft System Center Configuration Manager"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Data synchronization with Microsoft SCCM"
         },
         {
@@ -2463,7 +2430,7 @@ def markplace_plugins():
                     "long_description": "\n* Přídání „Štítků“ k libovolnému objektu v GLPI (rozšíření CommonDBTM).\n* Štítky je možné spravovat v titulcích.\n* Štítky jsou viditelné a upravitelné v hlavičce objektu (pod názvem).\n* Štítky lze vyhledávat a prohlížet v seznamu objektů.\n* Ve správě je možné zobrazit výkaz o souvisejících objektech.\n         "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Ajout de tags sur n&#039;importe quel objet de GLPI"
         },
         {
@@ -2586,7 +2553,7 @@ def markplace_plugins():
                     "long_description": "\nCe plugin permet d&#039;afficher des messages sur la page d&#039;accueil de GLPI.\n\nFonctionnalités\n---------------\n\n1. Création d&#039;une alerte avec du texte riche comme les notes.\n2. Choix d&#039;une date de début / date de fin de publication.\n3. Gestion des alertes par entité.\n4. Affichage des alertes en fonction du profil.\n         "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin allows to display messages on the GLPI&#039;s homepage."
         },
         {
@@ -2683,7 +2650,7 @@ def markplace_plugins():
                     "long_description": "Ajouter (et développer) de nouveaux rapports grahiques pour glpi.   \n\nCe plugin contient un ensemble de nouveaux rapports statistiques.\n\n* Assistance\n  * Backlog\n  * Ancienneté des tickets\n  * Tickets par groupes ou techniciens\n  * Top catégories ou groupes demandeurs\n  * Nombre de changement de groupes\n  * 5 rapports SLA\n\n* Inventaire\n  * Versions et distributions des OS\n  * Top fabricants\n  * top types (serveurs, portables, ...)\n  * Top statuts\n  * Age des ordinateurs\n  * Agents FusionInventory\n\n* Répartition des logs\n\nVous pouvez aussi ajouter vos propre rapports en utilisant le &#34;framework&#34; fourni par le plugin\nVoir documentation : https://github.com/PluginsGLPI/mreporting/wiki\n         "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Add (and develop) new graphical reports for glpi"
         },
         {
@@ -2828,7 +2795,7 @@ def markplace_plugins():
                     "long_description": "\nCette extension permet de simplifier l&#039;escalade de ticket vers des groupes différents.   \nElle ajoute les fonctionnalités suivantes :\n\n* Affichage d&#039;un historique visuel de l&#039;assignation des groupes sur un ticket.\n* Escalade rapide à un groupe présent dans cette historique.\n* Assignation du groupe initiateur lors de l&#039;apport d&#039;une solution.\n* Attribution du responsable et groupe technique lors d&#039;un changement de catégorie de ticket.\n* Clonage rapide de ticket.\n* Cloture des tickets clonés en même temps.\n* Prendre le premier ou dernier groupe du technicien (sur modification du ticket).\n* Bouton d&#039;assignation rapide à soi-même d&#039;un ticket.\n         "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin simplifies the ticket escalation to different groups"
         },
         {
@@ -2919,7 +2886,7 @@ def markplace_plugins():
                     "long_description": "Tento zásuvný modul umožňuje do požadavku přidat 4 nové volby.<br />- Při vytváření požadavku při výběru stavu „vyřešeno“ nebo „Uzavřeno“ požadavek nabídne vyplnění jeho řešení,<br />- Při vytváření nebo úpravě požadavku při výběru stavu „čekající“ je možné určit typy čekání, důvod čekání a datum hlášení,<br />- K dispozici bude nová zóna pro přidání informace po uzavření požadavku, <br />- Při vytváření a úpravě požadavku při výběru naléhavosti v závislosti na nastavení zásuvného modulu je možné určit odůvodnění."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin enables you to add 4 new options into a ticket."
         },
         {
@@ -2992,7 +2959,7 @@ def markplace_plugins():
                     "long_description": "Tento zásuvný modul cílí na filtrování skupin přiřaditelných v požadavku v závislosti na vybrané kategorii.\n\nJe možné určit stupeň k vašim glpi skupinám.\nPotom, pro každou z kategorií požadavku je možné určit která skupina bude zobrazena a které ne."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugins aims to filter assignable groups in ticket by selected category"
         },
         {
@@ -3054,7 +3021,7 @@ def markplace_plugins():
                     "long_description": "This plugin allows you to manage consumable requests for end user.<br />- Validation system of consumable request,<br />- Associated notifications,<br />- Wizard user based on available stock."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin allows you to manage consumable requests for end user."
         },
         {
@@ -3165,7 +3132,7 @@ def markplace_plugins():
                     "long_description": "\nLe plugin &#039;Champs supplémentaires&#039; (Fields) permet d’ajouter des champs personnalisés sur les différents objets gérés par GLPI : tickets, ordinateurs, utilisateurs...  \n\nLes données supplémentaires peuvent être ajoutées : \n\n* Dans un onglet de l&#039;objet\n* Dans le formulaire principal de l&#039;objet (au dessus du bouton sauvegarder)\n* Dans le formulaire d&#039;un onglet existant (attention, cette fonctionnalité est expérimental)\n\nLes types de champs possibles sont : \n\n* Entête (bloc de titre)\n* Texte (ligne simple)\n* Texte (ligne multiples)\n* Nombre\n* Liste déroulante (intitulés, forcement un arbre)\n* Oui / Non\n* Date\n* Date / Heure\n* liste d&#039;utilisateurs de glpi\n\nIl existe un [script de migration](https://github.com/pluginsGLPI/customfields/blob/master/scripts/migrate-to-fields.php) depuis le plugin &#34;customfields&#34;.  \n**Attention : celui ci est expérimental et mérité d&#039;être testé plus fortement. Nous vous conseillons fortement de sauvegarder vos données avant de l&#039;utiliser**\n         "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "The fields plugin allows you to add custom fields on glpi types : tickets, computers, users…"
         },
         {
@@ -3256,7 +3223,7 @@ def markplace_plugins():
                     "long_description": "Tento zásuvný modul do GLPI přidá rozhraní pro zadávání jednoduchých úkolů.<br />- K úkolům je možné přidávat poznámky.<br />- Je možné použít s přivaděčem e-mailů a vytvářet úkoly skrze něj.<br />- Je možné použít se zásuvným modulem Moje nástěnka"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Adding a management of tasks &amp; kanban. This plugin adds in GLPI, an interface to input simple tasks &amp; manage them in a kanban."
         },
         {
@@ -3414,7 +3381,7 @@ def markplace_plugins():
                     "long_description": "This plugin enables you to replace GLPI central by a dashboard<br />- Scaling widgets<br />- Editing mode to load new widgets<br />- Using Awesome Font <br />- New graphic widgets also based on a new graphic library: ChartJs (http: //www.chartjs .org /)<br />- Responsive display of the Dashboard<br />Generation of alerts on the Dashboard from a problem"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin enables you to replace GLPI central by a dashboard."
         },
         {
@@ -3487,7 +3454,7 @@ def markplace_plugins():
                     "long_description": "Tento zásuvný modul umožňuje v požadavcích přidat kartu časové osy\n         &gt; * Historie a statistiky pro různé stavy požadavků\n&gt; * Historie a statistiky pro různé techniky požadavků\n&gt; * Historie a statistiky pro různé skupiny techniků požadavků\n&gt; * Výkaz času stráveného na uzavřených požadavcích "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin allows you to add a Timeline tab on tickets"
         },
         {
@@ -3535,7 +3502,7 @@ def markplace_plugins():
                     "long_description": "Récupération des données d&#039;inventaire de l&#039;outil de MDM Airwatch. Import des données au format XML FusionInventory. Possibilité de forcer l&#039;inventaire manuellement d&#039;un device. Ce plugin fait partie de la souscription GLPi Network."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Connector to gather inventory information from Airwatch"
         },
         {
@@ -3598,7 +3565,7 @@ def markplace_plugins():
                     "long_description": "Ce plugin permet d&#039;exporter en PDF une liste des éléments utilisés par un utilisateur."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin allows you to export a PDF of the used items by a user."
         },
         {
@@ -3703,7 +3670,7 @@ def markplace_plugins():
                     "long_description": "Tento zásuvný modul umožňuje deklarovat a evidovat (podle entity) spotřebu různých kuponů s kredity přímo z formuláře požadavku."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin allows you to declare and follow (by entity) the consumptions of different credit vouchers directly from the Ticket form."
         },
         {
@@ -3751,14 +3718,14 @@ def markplace_plugins():
                     "long_description": "Connecteur GLPI avec XIVO\n\nVoici une list des fonctionnalités courantes / planifiées:\n\n* [x] Inventaire des téléphones\n* [x] Inventaire des lignes\n* [x] Présence des utilisateurs\n* [x] Auto ouverture des formulaires des tickets ou des utilisateurs\n* [x] Appel sur clic\n* [ ] Historique des appels\n* [ ] Annuaire\n\nMerci de contacter Teclib par mail (info&#64;glpi-project.org) ou par téléphone (01 79 97 02 78) pour toutes informations sur les développements futurs."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Connector for GLPI with XIVO or WAZO"
         },
         {
             "id": 157,
             "key": "geststock",
             "name": "Stock management",
-            "logo_url": None,
+            "logo_url": null,
             "xml_url": "https://raw.githubusercontent.com/yllen/geststock/master/geststock.xml",
             "homepage_url": "https://github.com/yllen/geststock",
             "download_url": "https://github.com/yllen/geststock/releases",
@@ -3802,7 +3769,7 @@ def markplace_plugins():
                     "long_description": "Ce plugin permet de gérer d&#039;une manière globale le stock des éléments de l&#039;inventaire et ce pour toutes les entités. Une entité réserve un matériel et l&#039;acheminement est suivi du départ du stock jusqu&#039;à l&#039;entité demandresse."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Global management for stock of assets"
         },
         {
@@ -3871,7 +3838,7 @@ def markplace_plugins():
                     "long_description": "\n                Spokojenost je zásuvný modul který umožňuje přidávat do průzkumu o spokojenosti další otázky.\n\n                Funkce:\n                ---------------\n\n                - Různé průzkumy (jeden pro každou entitu)\n\n                - Vícero dotazů třech typů\n                &#43; Rozbalovací nabídka Ano/Ne\n                &#43; Textový box – Textový box\n                &#43; Pozn.: Bude možné nastavit celkový počet hvězdiček.\n\n                - Tento zásuvný modul zásuvný modul umožnuje přidat všechny v něm nastavené otázky ke dvěma otázkám\n                základního GLPI v průzkumu spokojenosti.\n\n                - Tento modul přidá dva nové štítky k oznámením pro události „Průzkum spokojenosti“ a „Odpověď v\n                průzkumu spokojenosti&#34;.\n                &#43; Štítek „##satisfaction. question##“ umožňí přidat seznam otázek zásuvného modulu.\n                &#43; Štítek „##satisfaction. answer##“ umožňí přidat seznam otázek a odpovědí zásuvného modulu..\n            "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "More satisfaction"
         },
         {
@@ -3912,7 +3879,7 @@ def markplace_plugins():
                     "long_description": "GDrive allows Google Drive users to add files to every GLPI Item effortlessly."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Google Drive plugin for GLPi"
         },
         {
@@ -4130,7 +4097,7 @@ def markplace_plugins():
                     "long_description": "Inventaire de vos applications.Une application peut être formée par une arborescence à plusieurs niveaux de composants logiciels.Ces composants logiciels peuvent être associés à d&#039;autres éléments d&#039;inventaire (serveurs, bases de données, flux de données, ...). Vous pouvez ajouter ou supprimer vous-même des caractéristiques de l&#039;application (voir https://github.com/ericferon/glpi-archisw/wiki/How-to-customize-the-fields)."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Inventory of your applications. An application can be composed by several software components."
         },
         {
@@ -4337,7 +4304,7 @@ def markplace_plugins():
                     "long_description": "Inventaire de vos flux de donnéesCe plugin vous permet de spécifier les applications source et destination, le type de connexion, le format d&#039;échange, la fréquence et le calendrier d&#039;échange, ...(cette liste de caractéristiques peut être modifiée et étendue - voir comment faire dans le wiki du plugin, sur github), et associer ces flux avec d&#039;autres éléments d&#039;inventaire- Inventaire des applications- Peut être utilisé avec le helpdesk- Contrôle de validté des champs, avec le plugin Statecheck- Comptes pour la gestion des login/mot de passe de connexion aux applications"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Inventory of your dataflows. You can specify source and destination applications, connection type, exchange format, transfer frequency and calendar, ... (this list of characteristics can be modified and extended), and associate the dataflows with other elements of the inventory (accounts for connecting login and password, f.i)."
         },
         {
@@ -4454,7 +4421,7 @@ def markplace_plugins():
                     "long_description": "Ce plugin vous permet de contrôler la validité des champs d&#039;un formulaire.Par exemple, vous pouvez rendre un champ obligatoire ou pas, en fonction de certaines valeurs dans un autre champ.A cette fin, vous définissez une ou plusieurs règles :-Une règle est relative à une classe d&#039;inventaire (serveur, flux de données, ...) et dépend de la valeur d&#039;un champ (&#61; 1 état) dans cette classe (p.ex la valeur d&#039;un type ou d&#039;une catégorie) - Pour chaque règle, vous pouvez spécifier quelles autres conditions doivent être rencontrées pour activer la règle (p.ex la valeur d&#039;un autre champ doit contenir ou démarrer une certaine valeur)- Pour chaque règle, vous spécifiez quel contrôle doit être exécuté (p.ex un autre champ ne peut être vide, ou doit respecter une expression régulière)Plusieurs règles peuvent être définies pour un état, avec des conditions supplémentaires différentes"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin let you check the validity of form fields.For instance you can make a field mandatory or not, depending on some value in another field."
         },
         {
@@ -4553,7 +4520,7 @@ def markplace_plugins():
                     "long_description": "Tento zásuvný modul umožňuje spravovat oblasti funkcí podnikové architektury a přiřadit je k prvkům inventáře.Oblast funkce může být rozčleněna do podpoblastí, což pomůže k přiřazení k položkám inventáře (typicky aplikacím) k těmto funkcím"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin enables you to manage the functional areas of your enterprise architecture and associate them with elements of the inventory."
         },
         {
@@ -4760,7 +4727,7 @@ def markplace_plugins():
                     "long_description": "Ce plugin vous permet de créer des diagrammes d&#039;architecture, du style Visio, avec des éléments d&#039;inventaire (server, bases de données, applications, flux de données, emplacements, fournisseurs). Le plugin implémente l&#039;outil graphique Draw.io (http://www.draw.io) dans le contexte GLPI.En comparaison de l&#039;outil draw.io standard, un onglet contenant les éléments d&#039;inventaire GLPI a été ajouté.Vous pouvez ajouter ces objets graphiques sur la table à dessin, comme les autres objets graphiques (archimate, uml, etc ...). Mais ces objets graphiques sont chacunes liées à une classe d&#039;inventaire : quand vous entrez un nom dans l&#039;objet graphique, une fonction d&#039;autocomplétion cherche dans GLPI les éléments d&#039;inventaire contenant ce nom, qui apparaissent dans une liste déroulante. Quand un élément est sélectionné dans la liste, ses propriétés GLPI (description, type, statut, ...) sont liées à l&#039;objet graphique.  Quand ces propriétés sont changées dans l&#039;inventaire, la dénomination et/ou l&#039;apparence de l&#039;objet graphique est aussi adaptée : ainsi, quand vous changez le nom d&#039;une application dans GLPI, tous les objets graphiques dans tous les diagrammes sont adaptés, ou quand vous changez le statut d&#039;une application, son apparence change dans tous les diagrammes également. En conséquence, vos diagrammes sont centralisés dans la base de données de GLPI et ont une présentation uniforme, avec une information et une apparence actuelles.  Vous pouvez ajouter de nouveaux éléments d&#039;inventaire en créant une nouvelle librairie ou en modifiant celle fournie par défaut. Vous pouvez trouver plus de détails dans le wiki (https://github.com/ericferon/glpi-archimap/wiki)Par diagramme, vous pouvez spécifier quelles sont vos préférences d&#039;affichage (via le menu Fichier-&gt;Préférences) : vous pouvez choisir quelles propriétés sont affichées comme label (nom, description, ...) et si les icônes sont affichées pour mieux identifier les objets graphiques"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin enables you to create Visio-like (architecture) diagrams with elements of the inventory (computers, databases, applications, dataflows, locations, suppliers). The plugin implements the Draw.io (https://www.draw.io) graphical tool in the GLPI context"
         },
         {
@@ -4824,7 +4791,7 @@ def markplace_plugins():
                     "long_description": "\nCe plugin facilite l&#039;intégration de GLPI avec [Metabase](https://www.metabase.com/). \n\nIl permet actuellement de: \n\n* Se connecter à l&#039;API de Metabase.\n* Pousser la configuration de la base de données ou d&#039;utiliser une base de données configurée dans Metabase.\n* Pousser les clefs étrangère dans le modèle de données de Metabase\n* Pousser les énumérations (champs impact/urgence/priorité/type des tickets) dans le modèle de données\n* Pousser les questions, collections et tableaux de bords (si ils existent)\n* Intégrer les tableaux de bord de Metabase dans GLPI (sur la page centrale)\n* Gérer les profils (publication des tableaux de bord)\n* Importer les questions, collections et tableaux de bord existant depuis Metabase et les enregistrer au format JSON\n\n[Teclib&#039;](http://www.teclib-group.com/) fournit avec la distribution [GLPI Network](https://services.glpi-network.com/) des services additionnels comme du support pour l&#039;installation, de la conception de questions et tableaux de bord.\n         "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin eases integration of GLPI with Metabase"
         },
         {
@@ -4876,7 +4843,7 @@ def markplace_plugins():
                     "long_description": "El módulo Costs se alinea con tu organización generando los costes de las peticiones de manera automática, según la configuración de cada entidad."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Automatic costs generation for GLPI"
         },
         {
@@ -5190,7 +5157,7 @@ def markplace_plugins():
                     "long_description": "This plugin allows you to create wizards to handle complex requests in GLPI that will generate child tickets assigned to different groups of technicians.<br />Characteristics :<br />- Generate your own assistants<br />- Link with the ticket category to launch it automatically<br />- Create a father / childs tickets<br />- Semi-automatic creation of child tickets<br />- Scheduling created tickets<br />- Create basket for your demands<br />- Create PDF for your demands<br />- Translation of forms<br />- Meta Incidents<br />- Meta Changes<br />- Save your forms as Draft<br />- Use tags for titles<br />- Bootstrap Buttons"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin allows you to create wizards to handle complex requests in GLPI that will generate child tickets assigned to different groups of technicians"
         },
         {
@@ -5260,7 +5227,7 @@ def markplace_plugins():
                     "long_description": "El módulo ActualTime se alinea con tu organización añadiendo la posibilidad de registrar el tiempo real de ejecución de cada tarea en GLPI"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Adds actual time tracking for GLPI tasks"
         },
         {
@@ -5307,7 +5274,7 @@ def markplace_plugins():
                     "long_description": "Drag&#039;n&#039;dropping ticket tasks are the fastest and most efficient way to schedule your recurrent tickets and Reminders. Combine it with GLPI Reminders extension for Chrome and Firefox to reduce your planning time."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Enables drag&#039;n&#039;drop for not scheduled ticket tasks and reminders"
         },
         {
@@ -5383,7 +5350,7 @@ def markplace_plugins():
                     "long_description": "YAGP es un &#34;cajón de sastre&#34; donde añadiremos todas las pequeñas mejoras de GLPI que no justifiquen un plugin específico.\n        Puede habilitar estas dos mejoras:\n        * Cambiar fecha de solución por la fecha de fin de la ultima tarea\n        * Auto renovación de contratos tácitos\n\t* Menú fijo\n\t* Ir a ticket\n        "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Yet Another GLPI Plugin"
         },
         {
@@ -5451,7 +5418,7 @@ def markplace_plugins():
                     "long_description": "Activity management. This plugin allows you add your activities into planning. Holidays management.n"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Activity management. This plugin allows you add your activities into planning. Holidays management."
         },
         {
@@ -5481,7 +5448,7 @@ def markplace_plugins():
                 {
                     "num": "1.2.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -5531,43 +5498,43 @@ def markplace_plugins():
                 {
                     "num": "1.6.2",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.6.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.6.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.5.3",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.5.2",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.5.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.5.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -5617,67 +5584,67 @@ def markplace_plugins():
                 {
                     "num": "3.0.0",
                     "compatibility": "~10.0.11",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "2.0.3",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "2.0.2",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "2.0.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "2.0.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.4.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.4.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.3.3",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.3.2",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.3.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.3.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -5766,7 +5733,7 @@ def markplace_plugins():
                     "long_description": "\nThis plugin allows you to sync mobile devices and computers from Jamf Pro to GLPI along with their associated data. It also allows you to issue mobile device commands from GLPI.\n\nUsage\n- Server/sync configuration is found in Setup &gt; Config under the JAMF Plugin tab.\n- JSS User account used must have read access to mobile devices and computers at least. Additional access may be required depending on what items are synced (software, etc).\n- The two automatic actions &#34;importJamf&#039; and &#039;syncJamf&#34; can only be run in CLI/Cron mode due to how long they can take.\n- There is a rule engine used to filter out imported devices. The default import action is to allow the import.\n            "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Sync devices and data from Jamf to GLPI"
         },
         {
@@ -5849,7 +5816,7 @@ def markplace_plugins():
                     "long_description": "\n\t\tGapp Essentials is a mandatory plugin for enabling \n\t\tadvanced functionalities within Gapp, the mobile application\n\t\tfor GLPI.\n           \n\t\tBeginning with Gapp 2, the Gapp Essentials plugin has \n\t\tbecome a prerequisite for the app&#039;s operation.\n\n\t\tWe strongly recommend updating GLPI to safeguard against\n\t\tsecurity vulnerabilities. \n\t\tThe versions currently supported are:\n                -10.0.3&#43;\n\t\t     \n                Currently enables:\n                -Access to ticket documents\n                -Plugins list to Self-service users\n                -Max. uploadable file size \n                -Allowed filetypes\n                -Download file size\n            \n                "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Gapp essentials is a mandatory plugin to enable extended functionalities on Gapp, a GLPI mobile app."
         },
         {
@@ -5879,13 +5846,13 @@ def markplace_plugins():
                 {
                     "num": "1.2.5",
                     "compatibility": "~10.0.11",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.2.4",
                     "compatibility": "~10.0.11",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -5957,7 +5924,7 @@ def markplace_plugins():
                     "long_description": "\nCe plugin débloque les fonctionnalités avancées (Vue planification) dans GLPI (menu Accueil &gt; Assistance &gt; Planning).\n\nGlpi inclut [la bibliothèque Fullcalendar](fullcalendar.io/) pour afficher son planning.\nLa [partie planification](https://fullcalendar.io/license/premium) est sous triple licences, le cas de GLPI est couvert par l&#039;option 3: open source.\nComme l&#039;option est sous licence GLPV3, nous ne pouvous pas l&#039;utiliser directement dans GLPI, celle ci étant incompatible avec notre licence (GPLv2&#43;).\n\nDonc ce plugin inclut juste la bibliothèque et ajouter l&#039;option &#96;schedulerLicenseKey: &#039;GPL-My-Project-Is-Open-Source&#039;&#96; pour éviter les incompatibilités.\n         "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin unlock advanced planning features (Scheduler view) in GLPI (Home &gt; Assistance &gt; Planning)"
         },
         {
@@ -6034,7 +6001,7 @@ def markplace_plugins():
                     "long_description": "\nAdds a dashboard for web resources.\nResources can be scoped to specific Entities, Profiles, Groups, or Users (or a mix).\nResources can have an image icon (favicon for example), or a FontAwesome icon like &#039;fab fa-github&#34;.\nNon-image icons can have their colors changed as you see fit.\n\nResources can be any weblink or a link with a special URI scheme. For example these links are all valid:\n- https://glpi-project.org (Standard URL)\n- market://details?id&#61;org.glpi.inventory.agent&amp;hl&#61;en_US (Link to app on Android&#039;s Play Store)\n- softwarecenter://Page&#61;AvailableSoftware (Link to the Available Software page in the SCCM/MEM Software Center)\nFor more information about URI schemes please refer to https://en.wikipedia.org/wiki/List_of_URI_schemes.\n            "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Adds a dashboard for web resources"
         },
         {
@@ -6084,7 +6051,7 @@ def markplace_plugins():
                     "long_description": "This plugin allows you to add a Service object and other miscellaneous objects for impact analysis"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin allows you to add a Service object and other miscellaneous objects for impact analysis"
         },
         {
@@ -6114,13 +6081,13 @@ def markplace_plugins():
                 {
                     "num": "2.7.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "2.7.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -6170,43 +6137,43 @@ def markplace_plugins():
                 {
                     "num": "2.2.3",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "2.2.2",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "2.2.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "2.2.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "2.1.2",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "2.1.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "2.1.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -6290,7 +6257,7 @@ def markplace_plugins():
                     "long_description": "\nTake a screenshot directly from GLPI and attach it to a ticket, change or problem. Only works from the timeline for now.\n\nThis plugin should work on any modern desktop browser, but it won&#039;t work on mobile browsers.\n\nAdditionally, browsers only expose this feature when it is being used over HTTPS (or running over localhost). If your GLPI server doesn&#039;t use HTTPS yet, this plugin will not work.\n        "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Take a screenshot or screen recording directly from GLPI and attach it to a ticket, change or problem"
         },
         {
@@ -6374,7 +6341,7 @@ def markplace_plugins():
                     "long_description": "Plugin for managing changes in production.\nThe plugin allows you to create productions of change taking place within the IT department.\nThe plugin allows:\n         <br /> - To start the production of changes thanks to predefined models\n         <br /> - Define risks, backtracking, deployment tasksand tests\n         <br /> - To finalize the releases or to mark them as failed\n    "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Change releases management plugin"
         },
         {
@@ -6438,7 +6405,7 @@ def markplace_plugins():
                     "long_description": "\nThis plugin supports Oauth connection for emails receivers\nIt permits emails fetching from G Suite and Azure AD mailboxes.\n         "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin supports Oauth connection for emails receivers"
         },
         {
@@ -6479,7 +6446,7 @@ def markplace_plugins():
                     "long_description": "JS Addons is developed to allow the use of several useful web tools in GLPI by inserting JavaScript snippets for them to execute. Currently, JS Addons supports:<ul><li>Analytics:</li><ul><li><a href=\"http://mtr.cool/yfuhbk\">Metricool</a></li><li>Google Analytics</li></ul><li>Chat:</li><ul><li><a href=\"https://www.tawk.to/?pid&#61;snaotzu\">Tawk.to</a></li></ul></ul>"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Allows the use of several useful web tools by inserting their JS snippets"
         },
         {
@@ -6509,115 +6476,115 @@ def markplace_plugins():
                 {
                     "num": "1.10.1",
                     "compatibility": "~10.0.7",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.10.0",
                     "compatibility": "~10.0.7",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.9.10",
                     "compatibility": "~10.0.7",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.9.9",
                     "compatibility": "~10.0.7",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.9.8",
                     "compatibility": "~10.0.7",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.9.7",
                     "compatibility": "~10.0.7",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.9.6",
                     "compatibility": "~10.0.7",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.9.5",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.9.4",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.9.3",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.9.2",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.9.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.9.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.8.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.8.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.7.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.7.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.6.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.6.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -6667,79 +6634,79 @@ def markplace_plugins():
                 {
                     "num": "1.6.2",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.6.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.6.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.5.3",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.5.2",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.5.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.5.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.4.5",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.4.4",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.4.3",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.4.2",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.4.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.4.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -6788,61 +6755,61 @@ def markplace_plugins():
                 {
                     "num": "1.1.9",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.1.8",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.1.7",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.1.6",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.1.5",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.1.4",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.1.3",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.1.2",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.1.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.1.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -6921,7 +6888,7 @@ def markplace_plugins():
                     "long_description": "Use your camera to scan QR codes or barcodes as a way to input text into some fields. This ties into the global search box, Physical Inventory plugin&#039;s search box, and my Asset Audit plugin&#039;s search box and allows you to use your camera as a digital barcode reader. Since browsers can only use webcams/cameras in a secure context, you must be connected to your GLPI instance over HTTPS or localhost."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Use your camera to scan QR codes or barcodes as a way to input text into some fields."
         },
         {
@@ -7117,7 +7084,7 @@ def markplace_plugins():
                     "long_description": "Ce plugin vous permet de définir les processus métiers de votre architecture d&#039;entreprise et de les associer à des éléments d&#039;inventaire.Un processus métier peut être décomposé en tâches, auxquels vous associez des éléments d&#039;inventaires (comme des applications, p.ex).Les champs contenant les détails d&#039;une tâche peuvent être configurés selon votre besoin. Ce plugin requiert 2 autres plugins : Apps Structure (archisw) et Statecheck."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin enables you to manage the business processes of your enterprise architecture and associate them with elements of the inventory."
         },
         {
@@ -7147,19 +7114,19 @@ def markplace_plugins():
                 {
                     "num": "1.3.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.3.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.2.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -7238,16 +7205,16 @@ def markplace_plugins():
                     "long_description": "Secure password sharing integration for GLPI.\nSharing passwords is an IT nightmare, no matter which ITSM tool you use. Zero-trust is the way to go, although it is only sometimes possible and only for some scenarios.\nOne-Time Secret is an excellent tool to overcome this common issue. By sharing a burnable one-time open link with your interlocutor, you will forever forget passwords stored in emails or messaging tools, available for indiscrete eyes.\nSecret Link expiration and additional Passphrase are the icings on the cake.\n\nBut opening a website, copying and pasting, sending a message…, well, the whole process may be improved.\n\nThis is where our One-Time Secret GLPI integration excels.\n\nA streamlined experience for both techs and end-users.\n         "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "One-Time Secret integration. Share your passwords securely on GLPI."
         },
         {
             "id": 250,
             "key": "glpiinventory",
             "name": "GLPI Inventory",
-            "logo_url": None,
+            "logo_url": null,
             "xml_url": "https://raw.githubusercontent.com/glpi-project/glpi-inventory-plugin/main/glpiinventory.xml",
-            "homepage_url": None,
+            "homepage_url": null,
             "download_url": "https://github.com/glpi-project/glpi-inventory-plugin/releases",
             "issues_url": "https://github.com/glpi-project/glpi-inventory-plugin/issues",
             "readme_url": "https://raw.githubusercontent.com/glpi-project/glpi-inventory-plugin/main/README.md",
@@ -7403,7 +7370,7 @@ def markplace_plugins():
                     "long_description": "\n   GLPI Inventory est un projet libre dont les fonctionalités principales sont l&#039;inventaire du matériel, le télédéploiement et la découverte réseau et complète la gestion de parc et le helpdesk de l&#039;outil GLPI.  \n   &#34;GLPI Inventory for GLPI&#34; est composé d&#039;une collection de plugins (extensions) qui dialoguent avec un agent installé sur les postes clients (GLPI Inventory-Agent).  \n\n   - GLPI Inventory Core, fournit les fonctionnalités centrales :\n\n      1. Communication avec les agents d&#039;inventaire et de découverte.\n      2. Gestion et planifications des tâches.\n      3. Règles centralisées pour ces plugins d&#039;import de matériel.\n      4. Gestion du matériel inconnu (zone tampon entre vos matériels gérés dans GLPI et ceux présents réellement sur le réseau).\n\n   - GLPI Inventory Inventory :\n\n      1. Inventaire local des ordinateurs (matériel, logiciel, antivirus).\n      2. Prise en charge et mise à jour des ordinateurs déjà dans GLPI.\n\n   - GLPI Inventory SNMP :\n\n      1. Découverte réseau avec gestion des matériels inconnus.\n      2. Inventaire distant des switchs et imprimantes (grâce au protocole SNMP).\n      3. Récupération des informations sur les ports, les VLANs et liaison entre ports des switchs et matériels présents dans GLPI (ordinateurs, imprimantes réseau, switchs...).\n      4. Historique des changements sur chaque port de switch et rapports.\n      5. Niveau des cartouches des imprimantes, relevé journalier des compteurs de pages et rapports.\n   "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "GLPI Inventory is a free and open source project providing hardware, software inventory, software deployment and network discovery to the IT asset management and helpdesk software called GLPI. &#34;GLPI Inventory for GLPI&#34; is a collection of plugins communicating with some agents (GLPI Inventory-Agent), deployed on computers"
         },
         {
@@ -7479,7 +7446,7 @@ def markplace_plugins():
                     "long_description": "Plugin for purchase requests prior to launching orders with the order plugin"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Plugin for purchase requests prior to launching orders with the order plugin"
         },
         {
@@ -7509,25 +7476,25 @@ def markplace_plugins():
                 {
                     "num": "0.1.0",
                     "compatibility": "~9.5.0 | ~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "0.0.3",
                     "compatibility": "~9.5.0 | ~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "0.0.2",
                     "compatibility": "~9.5.0 | ~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "0.0.1",
                     "compatibility": "~9.5.0 | ~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -7577,31 +7544,31 @@ def markplace_plugins():
                 {
                     "num": "2.0.4",
                     "compatibility": "~9.5.0 | ~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "2.0.3",
                     "compatibility": "~9.5.0 | ~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "2.0.2",
                     "compatibility": "~9.5.0 | ~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "2.0.1",
                     "compatibility": "~9.5.0 | ~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "2.0.0",
                     "compatibility": "~9.5.0 | ~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -7692,7 +7659,7 @@ def markplace_plugins():
                     "long_description": "\nRestores the functionality from before GLPI version 10.0 where you could add a followup or task and update the parent Ticket, Change, or Problem status in a single action.\n        "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Allows optionally setting the Ticket, Change or Problem status when creating a followup or task"
         },
         {
@@ -7742,7 +7709,7 @@ def markplace_plugins():
                     "long_description": "Questo plugin permette l&#039;assegnazione di un ticket ad un tecnico utilizzando una politica di roundrobin. Il plugin valuta il gruppo indicato nel campo &#34;gruppo incaricato dell&#039;hardware&#34; nelle varie categorie, ed assegna il ticket ad uno dei membri del gruppo, ruotnado i membri ad goni nuovo ticket con una politica di tipo roundrobin"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin allow the assignation of a ticket using a roundrobin policy."
         },
         {
@@ -7854,7 +7821,7 @@ def markplace_plugins():
                     "long_description": "Inventaire de vos structures de données.Une structures de données peut être formée par une arborescence à plusieurs niveaux d&#039;autres éléments.Ces structures de données peuvent être associés à d&#039;autres éléments d&#039;inventaire (application maître, serveurs, bases de données, flux de données, ...)"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Inventory of your data structures. A data structure can be composed by several data elements."
         },
         {
@@ -7930,7 +7897,7 @@ def markplace_plugins():
                     "long_description": "Ajoute un onglet Gantt aux objets projet de GLPI. La fonctionnalité a été retiré du coeur de GLPI depuis la version 10.0.1."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "gantt GLPI plugin."
         },
         {
@@ -8084,7 +8051,7 @@ def markplace_plugins():
                     "long_description": "Ce greffon vous permet de notifier, à une autre application, des changements relatifs à un élément d&#039;inventaire.Un appel API peut alors être exécuté, pour reporter ce changement dans cette autre application.Consultez le wiki sur github pour le manuel d&#039;utilisation(https://github.com/ericferon/glpi-webhook/wiki)."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin let you notify another application about changes in inventoy items.Then, an API call to this other application can be performed to reflect this change into this other application."
         },
         {
@@ -8125,7 +8092,7 @@ def markplace_plugins():
                     "long_description": "Borgbase is a simple and secure offsite backup based on the opensource Backup utility Borg.\nLogin into Borgbase has a couple of challenges: \n1. There is only one user.\n2. User has complete access to every area\nWith the Borgbase GLPI integration we can:\n1. Show relevant backup information: when the repo was last updated; how much space is using...\n2. Get some:native Dashboard Widgets to track that information from GLPI. \n        "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "A Borgbase integration"
         },
         {
@@ -8172,7 +8139,7 @@ def markplace_plugins():
                     "long_description": "\nAdds an extra security layer to GLPI login by asking for a One-Time Security Code. \nCurrently, it only supports OTP via email.\n        "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "A OTP plugin for GLPI"
         },
         {
@@ -8202,19 +8169,19 @@ def markplace_plugins():
                 {
                     "num": "1.0.0-beta3",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "beta"
                 },
                 {
                     "num": "1.0.0-beta2",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "beta"
                 },
                 {
                     "num": "1.0.0-beta1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "beta"
                 }
             ],
@@ -8262,7 +8229,7 @@ def markplace_plugins():
                 {
                     "num": "1.7.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -8329,7 +8296,7 @@ def markplace_plugins():
                     "long_description": "The TicketFilter plugin will allow you to add additional regular expressions that \n            TicketFilter will use locate unique identifiers in received tickets. If a match is found, \n            TicketFilter will use the found identifier to locate existing tickets with the same identifier and \n            add the received email as followup in all tickets that contain that identifier. If configured ticketfilter \n            will try to prevent notifications to be send to prevent email runaway issues, reopen closed tickets with status\n            new, or update the ticket to a solved state if specific keywords where found in the received email subject.\n        "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Matches foreign (ticket, monitoring, crm) identifiers in the mailsubject of mailgate processed tickets or manually created tickets \n            and adds successfully matched tickets as followups in existing tickets with the same identifier and more."
         },
         {
@@ -8387,7 +8354,7 @@ def markplace_plugins():
                     "long_description": "Ce plugin permet de &#34;piloter&#34; les agents d&#039;inventaire Teclib&#039; afin d&#039;executer un inventaire des bases de données présentes sur le poste."
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "DatabaseInventory GLPI plugin."
         },
         {
@@ -8417,7 +8384,7 @@ def markplace_plugins():
                 {
                     "num": "1.0.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -8467,31 +8434,31 @@ def markplace_plugins():
                 {
                     "num": "1.1.0",
                     "compatibility": "~10.0.10",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.0.3",
                     "compatibility": "~10.0.10",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.0.2",
                     "compatibility": "~10.0.10",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.0.1",
                     "compatibility": "~10.0.10",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.0.0",
                     "compatibility": "~10.0.10",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -8541,55 +8508,55 @@ def markplace_plugins():
                 {
                     "num": "1.0.8",
                     "compatibility": "~10.0.10",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.0.7",
                     "compatibility": "~10.0.10",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.0.6",
                     "compatibility": "~10.0.10",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.0.5",
                     "compatibility": "~10.0.10",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.0.4",
                     "compatibility": "~10.0.10",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.0.3",
                     "compatibility": "~10.0.10",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.0.2",
                     "compatibility": "~10.0.10",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.0.1",
                     "compatibility": "~10.0.10",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.0.0",
                     "compatibility": "~10.0.10",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -8639,13 +8606,13 @@ def markplace_plugins():
                 {
                     "num": "1.0.1",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 },
                 {
                     "num": "1.0.0",
                     "compatibility": "~10.0.0",
-                    "download_url": None,
+                    "download_url": null,
                     "stability": "stable"
                 }
             ],
@@ -8754,7 +8721,7 @@ def markplace_plugins():
                     "long_description": "Glpisaml provides SAML Single Sign On (SSO) capabilties for GLPI. Glpisaml is written with GLPI10&#43; \n            support in mind. It uses GLPI core components and best-practices for maximum compatibility and \n            maintainability. The plugin enables you to configure multiple SAML providers allowing your customers\n            SSO access as well. The plugin will create new GLPI users on the fly and apply jit rules to assign \n            entities, groups and profiles. For questions join our discord at: https://discord.gg/KyMdkqJcGz. \n            Find an issue, register it at my codeberg site. Written with passion for OSS, Enjoy!\n        "
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "Enables you to configure SAML with an external IdP to authenticate and authorize users using the GLPI UI."
         },
         {
@@ -8804,7 +8771,7 @@ def markplace_plugins():
                     "long_description": "Ajoute la librairie php-cas"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "phpcas GLPI plugin."
         },
         {
@@ -8866,24 +8833,11 @@ def markplace_plugins():
                     "long_description": "This plugin allows you to create automatic exports from saved searches"
                 }
             ],
-            "required_offers": None,
+            "required_offers": null,
             "short_description": "This plugin allows you to create automatic exports from saved searches"
         }
-    ]
-
-@app.get("/api/marketplace/plugin/{plugin_id}/download/{plugin_version}")
-def marketplace_plugin_download(plugin_id: str, plugin_version: str):
-    # Request Headers:
-    # - X-Registration-Key: %%REGISTRATION_KEY%%
-    # - X-Glpi-Network-Uid: %%GLPI_NETWORK_UID%%
-    return
-
-@app.get("/api/marketplace/tags/top")
-def marketplace_tags_top():
-    # Request Headers:
-    # - X-Registration-Key: %%REGISTRATION_KEY%%
-    # - X-Glpi-Network-Uid: %%GLPI_NETWORK_UID%%
-    return [
+    ],
+    "tags": [
         {
             "key": "inventaire",
             "tag": "Inventaire",
@@ -8937,7 +8891,7 @@ def marketplace_tags_top():
             "tag": "Export",
             "lang": "fr",
             "plugin_count": 8
-        },
+        }, 
         {
             "key": "graphiques",
             "tag": "Graphiques",
@@ -8975,3 +8929,5 @@ def marketplace_tags_top():
             "plugin_count": 5
         }
     ]
+  }
+}

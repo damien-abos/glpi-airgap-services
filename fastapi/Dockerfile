@@ -23,11 +23,11 @@ LABEL maintainer="damien-abos"
 
 
 # copy local files
-COPY requirements.txt  app /code/
+COPY app /app/
 
 # install requiremements
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
-WORKDIR /code
+#WORKDIR /
 EXPOSE 8080
 CMD ["fastapi", "run", "app/main.py", "--proxy-headers", "--port", "8080"]

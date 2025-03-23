@@ -1,0 +1,1 @@
+from .registration_info import RegistrationInfo
