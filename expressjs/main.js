@@ -1,23 +1,7 @@
 import express from 'express'
 import serveStatic from 'serve-static'
 
-//import data from './data.json' with { type: 'json' }
-import { configureStore } from '@reduxjs/toolkit'
-import infoReducer from  './registration/infoSlice.js'
-import offersReducer from './registration/offersSlice.js'
-import pluginsReducer from './marketplace/pluginsSlice.js'
-import tagsReducer from './marketplace/tagsSlice.js'
-
-const store = configureStore({
-    reducer: {
-        marketplacePlugins: pluginsReducer,
-        marketplaceTags: tagsReducer,
-        registrationInfo: infoReducer,
-        registrationOffers: offersReducer
-    }
-})
-
-store.subscribe(() => console.log(store.getState()))
+import store from './store.js'
 
 const port = normalizePort(process.env.NODE_PORT || 3000)
 const app = express()
@@ -27,12 +11,12 @@ app.get('/status', (req, res) => {
 })
 
 app.get('/api/registration/info', (req, res) => {
-    res.send(store.getState().infoReducer)
+    res.send(store.getState().registrationInfo)
 })
 
 app.put('/api/registration/info', (req, res) => {
     store.dispatch()
-    res.send(store.getState().infoReducer)
+    res.send(store.getState().registrationInfo)
 })
 
 app.get('/api/registration/offers', (req, res) => {

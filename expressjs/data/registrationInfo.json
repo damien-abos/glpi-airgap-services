@@ -1,0 +1,15 @@
+{
+    "key": "%%REGISTRATION_KEY%%",
+    "is_valid": true,
+    "owner": {
+        "name": "%%REGISTRATION_OWNER%%"
+    },
+    "subscription": {
+        "offer_reference": "virtual",
+        "title": "Enregistré",
+        "is_running": true,
+        "begin_date": null,
+        "end_date": null,
+        "features": []
+    }
+}
